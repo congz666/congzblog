@@ -1,0 +1,41 @@
+{{ define "views/posts/about.html" }}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+	{{ template "views/layouts/_head.html" . }}
+</head>
+
+<body class="d-flex flex-column h-100">
+
+	{{ template "views/layouts/_header.html" . }}
+
+    <main class="flex-shrink-0 my-4">
+			<div class="container text-dark">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="container p-4 bg-white shadow">
+							
+							<hr>	
+							<article class="markdown-body">
+								{{.aboutMe|markdowntohtml}}
+							</article>
+	
+						</div>
+					</div>
+					<div class="col-md-3">
+							{{ template "views/layouts/_right.html" . }}
+					</div>
+				</div>
+			</div>
+	
+		</main>
+
+
+	{{ template "views/layouts/_footer.html" . }}
+	{{ template "views/layouts/_js.html" . }}
+
+	{{/* 自定义 js 写在这个下面 */}}
+</body>
+
+</html>
+{{ end }}

@@ -1,0 +1,65 @@
+{{define "views/backstage/updatecategory.html"}}
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    {{ template "views/blayouts/_bhead.html" . }}
+</head>
+
+<body>
+    <!-- Left Panel -->
+    {{ template "views/blayouts/_bleft.html" . }}
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        {{ template "views/blayouts/_bheader.html" . }}
+        <!-- /#header -->
+        <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                    <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">新增分类</div>
+                                <div class="card-body card-block">
+                                    <form action="/backstage/category/post?category_id={{.category.CategoryID}}" method="post" class="">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-tag"></i></div>
+                                                <input type="text" id="category_name" name="category_name" value="{{.category.CategoryName}}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-bar-chart-o"></i></div>
+                                                <input type="text" id="category_no" name="category_no" value="{{.category.CategoryNo}}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-actions form-group">                                  
+                                             <button type="submit" class="btn btn-outline-success" ><i class="fa fa-rss"></i>&nbsp; Submit</button>
+                                            <button type="reset" class="btn btn-outline-danger"><i class="fa fa-magic"></i>&nbsp; Reset</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+    
+            </div>
+            <!-- .animated -->
+        </div>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+        <!-- Footer -->
+        {{ template "views/blayouts/_bfooter.html" . }}
+        <!-- /.site-footer -->
+    </div>
+    <!-- /#right-panel -->
+
+    <!-- Scripts -->
+    {{ template "views/blayouts/_bjs.html" . }}
+</body>
+</html>
+{{end}}

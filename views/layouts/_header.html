@@ -1,0 +1,32 @@
+{{ define "views/layouts/_header.html" }}
+	<header>
+		<div id="page-top"></div>
+		<nav class="navbar navbar-expand-md navbar-light shadow bg-light">
+			<div class="container">
+				<a class="navbar-brand" href="/" target="_balnk">Congz  博客</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars"
+					aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbars">
+					<ul class="navbar-nav mr-auto">
+					     <li class="nav-item mr-3">
+							<a class="nav-link" href="/leave" title="为博客留言">留言</a>
+						</li>
+						<li class="nav-item mr-3">
+							<a class="nav-link" href="/about" title="关于本博客">关于</a>
+						</li>
+
+					</ul>
+
+					<button class="btn">
+						<span class="iconfont icon-search text-primary"></span>
+					</button>
+					<span class="caret"></span>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+{{ end }}

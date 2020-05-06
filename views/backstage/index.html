@@ -1,0 +1,179 @@
+{{define "views/backstage/index.html"}}
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    {{ template "views/blayouts/_bhead.html" . }}
+</head>
+
+<body>
+    <!-- Left Panel -->
+    {{ template "views/blayouts/_bleft.html" . }}
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        {{ template "views/blayouts/_bheader.html" . }}
+        <!-- /#header -->
+        <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <!-- Widgets  -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="fa fa-book"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{.article_count}}</span></div>
+                                            <div class="stat-heading">文章数量</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="fa fa-tag"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{.category_count}}</span></div>
+                                            <div class="stat-heading">分类数量</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="fa fa-comment-o"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-heading">评论数量</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-4">
+                                        <i class="fa fa-leaf"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-heading">留言数量</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widgets -->
+
+                <div class="clearfix"></div>
+           
+                <!-- To Do and Live Chat -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title box-title">To Do List</h4>
+                                <div class="card-content">
+                                    <div class="todo-list">
+                                        <div class="tdl-holder">
+                                            <div class="tdl-content">
+                                                <ul>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox"><i class="check-box"></i><span>读完Go程序设计语言</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox"><i class="check-box"></i><span>读懂一个大项目并修改其功能</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" checked><i class="check-box"></i><span>完善博客并部署到docker</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" checked><i class="check-box"></i><span>以上5月8之前</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" checked><i class="check-box"></i><span>Creating component page</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /.todo-list -->
+                                </div>
+                            </div> <!-- /.card-body -->
+                        </div><!-- /.card -->
+                    </div>
+                </div>
+                <!-- /To Do and Live Chat -->
+            </div>
+            <!-- .animated -->
+        </div>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+        <!-- Footer -->
+        {{ template "views/blayouts/_bfooter.html" . }}
+        <!-- /.site-footer -->
+    </div>
+    <!-- /#right-panel -->
+
+    <!-- Scripts -->
+    {{ template "views/blayouts/_bjs.html" . }}
+</body>
+</html>
+{{end}}

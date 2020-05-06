@@ -1,0 +1,74 @@
+{{ define "views/posts/leave.html" }}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+		<link rel="stylesheet" href="/static/css/leave.css">
+	{{ template "views/layouts/_head.html" . }}
+</head>
+
+<body class="d-flex flex-column h-100">
+
+	{{ template "views/layouts/_header.html" . }}
+
+    <main class="flex-shrink-0 my-4">
+			<div class="container text-dark">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="container p-4 bg-white shadow">
+							
+							<div class="comments">
+
+                                {{range .leave_list}}
+								<div class="comment-wrap">
+									<div class="comment-block">
+											<p class="comment-text">{{.Content}} </p>
+													<div class="bottom-comment">
+															<div class="comment-date">{{.CreateTime}}</div>
+															<ul class="comment-actions">
+																<li class="complain">{{.Username}}</li>
+																<li class="reply">{{.Email}}</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												{{end}}
+															<div class="comment-wrap">
+
+																	<div class="comment-block">
+																		<form action="/leave/submit" method="POST">
+																			<textarea name="content" id="" cols="30" rows="3" placeholder="Say somthing..."></textarea>																	
+																	</div>
+																</div>
+															<div class="comment-input">
+																		<input name="author" type="text" placeholder="name..."/>
+																	  </div>
+																	  <div class="comment-input">
+																	  <input name="email" type="text" placeholder="email..."/>
+																	</div>
+																	<div class="comment-input">
+																	<input type="submit" value="留言" />
+																	</div>
+																	</form>
+														</div>
+														
+													
+					
+						</div>
+					</div>
+					<div class="col-md-3">
+							{{ template "views/layouts/_right.html" . }}
+					</div>
+				</div>
+			</div>
+	
+		</main>
+
+
+	{{ template "views/layouts/_footer.html" . }}
+	{{ template "views/layouts/_js.html" . }}
+
+	{{/* 自定义 js 写在这个下面 */}}
+</body>
+
+</html>
+{{ end }}

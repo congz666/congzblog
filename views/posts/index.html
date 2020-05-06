@@ -1,0 +1,52 @@
+{{ define "views/posts/index.html" }}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+	{{ template "views/layouts/_head.html" . }}
+</head>
+
+<body class="d-flex flex-column h-100">
+
+	{{ template "views/layouts/_header.html" . }}
+
+	<main class="flex-shrink-0 my-4">
+		<div class="container text-secondary">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="container p-3">
+						{{ if .article_list }}
+						<ul class="list-unstyled article-list">
+							{{ range .article_list }}
+							<li class="media mb-3">
+								<div class="media-body">
+									<h1 class="mb-1"><a class="text-dark" href="/article/detail/?article_id={{.ID}}">{{.Title }} </a></h1>
+									<p>
+										<a class="text-secondary" href="/">{{ .Username }}</a>
+										 &rarr; <small>update: {{.UpdatedAt}}</small>
+									</p>
+									<p>
+										{{ .Summary }}
+									</p>
+								</div>
+							</li>
+							{{ end }}
+						</ul>
+						{{ end }}
+					</div>
+				</div>
+				<div class="col-md-3">
+					{{ template "views/layouts/_right.html" . }}
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	{{ template "views/layouts/_footer.html" . }}
+	{{ template "views/layouts/_js.html" . }}
+
+	{{/* 自定义 js 写在这个下面 */}}
+</body>
+
+</html>
+{{ end }}

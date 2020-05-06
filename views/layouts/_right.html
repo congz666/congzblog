@@ -1,0 +1,40 @@
+{{ define "views/layouts/_right.html"}}
+<div class="card mb-2 boder-white bg-light text-secondary">
+	<div class="card-body shadow">
+		<div class="card-title text-center">
+			公告
+		</div>
+		<hr>
+		<small>
+			本博客是由 go 写的，点击 <a href="/about">about</a> 了解更多,如果您有任何建议，可以在<a href="/leave">留言</a>提出
+		</small>
+	</div>
+</div>
+<div class="card mb-2 border-white bg-light text-secondary">
+	<div class="card-body shadow">
+		<div class="card-title text-center">
+			分类
+		</div>
+		<hr>
+		{{range .category}}
+		<a class="btn btn-light btn-sm my-1 mr-1 shadow rounded" href="/category?category_id={{.CategoryID}}">
+			<span class="text-secondary font-weight-bold">{{ .CategoryName }}</span>
+			<span class="badge badge-secondary">{{ .CategoryNo }}</span>
+		</a>
+		{{ end }}
+	</div>
+</div>
+<div class="card mb-2 border-white bg-light text-secondary">
+	<div class="card-body shadow">
+		<div class="card-title text-center">
+			友情链接
+		</div>
+		<hr>
+		<small>
+			<ul class="list-unstyled">
+				<li class="mb-2"><a href="https://github.com">github</a></li>
+				<li class="mb-2"><a href="https://leetcode-cn.com/">leetcode中文网</a></li>
+			</ul>
+		</small>
+	</div>
+	{{ end }}

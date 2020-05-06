@@ -1,0 +1,29 @@
+{{ define "views/errors/loginfail.html" }}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+	{{ template "views/layouts/_head.html" . }}
+</head>
+
+<body class="d-flex flex-column h-100">
+
+	{{ template "views/layouts/_header.html" . }}
+
+	<main class="flex-shrink-0 my-4">
+		<div class="container text-secondary">
+            <div class="row">
+                <div class="col-md-6 offset-md-3  p-5 mt-5">
+                    <h1><span class="text-danger"></span>登录已失效，请重新登录</h1>
+                    <p class="mt-5">
+                        <a class="mr-3" href="/login">登录</a>
+                        <a class="" href="/">返回首页</a>
+                    </p>
+                </div>
+            </div>
+		</div>
+
+	</main>
+</body>
+
+</html>
+{{ end }}
