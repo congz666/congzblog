@@ -152,7 +152,7 @@ func LeaveSubmit(c *gin.Context) {
 
 //About ...
 func About(c *gin.Context) {
-	aboutByte, err := service.ReadAll("./zishu.md")
+	aboutByte, err := service.ReadAll("./README.md")
 	if err != nil {
 		c.HTML(http.StatusInternalServerError, "views/errors/500.html", nil)
 		return
