@@ -24,8 +24,8 @@ func InsertComment(comment, author, email, summary string, articleID int64) (err
 	c.Content = comment
 	c.Summary = summary
 	c.Username = author
-	c.CreateTime = time.Now()
-	c.Status = 1
+	c.CreatedAt = time.Now()
+	c.Email = email
 	err = db.InsertComment(&c)
 	return
 }
@@ -41,7 +41,7 @@ func GetCommentList(articleID int64) (commentList []*model.Comment, err error) {
 		logging.Error(err, "article id:%d not found", articleID)
 		return
 	}
-	commentList, err = db.GetCommentList(articleID, 0, 100)
+	commentList, err = db.GetCommentList(articleID)
 	return
 }
 

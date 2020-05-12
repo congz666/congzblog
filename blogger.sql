@@ -33,7 +33,8 @@ CREATE TABLE `article` (
   `summary` varchar(256) NOT NULL COMMENT '文章摘要',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '发布时间',
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`article_id`)
+  PRIMARY KEY (`article_id`),
+  FOREIGN KEY(`category_id`) REFERENCES category(`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `article` */
@@ -66,10 +67,11 @@ CREATE TABLE `comment` (
   `content` text NOT NULL COMMENT '评论内容',
   `summary` varchar(256) NOT NULL COMMENT '评论摘要',
   `username` varchar(64) NOT NULL COMMENT '评论作者',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '评论发布时间',
-  `status` int(255) NOT NULL DEFAULT '1' COMMENT '评论状态: 0, 删除；1， 正常',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '评论发布时间',
+  `email` varchar(255) NOT NULL,
   `article_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`comment_id`)
+  PRIMARY KEY (`comment_id`),
+  FOREIGN KEY(`article_id`) REFERENCES article(`article_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `comment` */

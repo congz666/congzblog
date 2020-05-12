@@ -24,12 +24,12 @@ func InsertComment(comment *model.Comment) (err error) {
 	}()
 	sqlstr := `insert 
 						into comment(
-							content, summary, username, article_id					
+							content, summary, username, article_id, email					
 						)
 					values (
-							?, ?, ?,?
+							?, ?, ?, ?, ?
 					)`
-	_, err = tx.Exec(sqlstr, comment.Content, comment.Summary, comment.Username, comment.ArticleID)
+	_, err = tx.Exec(sqlstr, comment.Content, comment.Summary, comment.Username, comment.ArticleID, comment.Email)
 	if err != nil {
 		return
 	}
@@ -63,27 +63,21 @@ func UpdateViewCount(articleID int64) (err error) {
 }
 
 //GetCommentList ...
-func GetCommentList(articleID int64, pageNum, pageSize int) (commentList []*model.Comment, err error) {
-	if pageNum < 0 || pageSize < 0 {
-		err = fmt.Errorf("invalid parameter, page_num:%d, page_size:%d", pageNum, pageSize)
-		return
-	}
+func GetCommentList(articleID int64) (commentList []*model.Comment, err error) {
 	sqlstr := `select 
-							comment_id, content, username, create_time
+							comment_id, content, username, created_at, summary, email
 						from 
 							comment 
 						where 
-							article_id = ? and 
-							status = 1
-						order by create_time desc
-						limit ?, ?`
-	err = DB.Select(&commentList, sqlstr, articleID, pageNum, pageSize)
+							article_id = ?
+						order by created_at desc`
+	err = DB.Select(&commentList, sqlstr, articleID)
 	return
 }
 
 //GetAllCommentList ...
 func GetAllCommentList() (commentList []*model.Comment, err error) {
-	sqlstr := "select comment_id, summary, username,article_id from comment order by comment_id asc"
+	sqlstr := "select comment_id, summary, username,article_id, email from comment  order by article_id asc"
 	err = DB.Select(&commentList, sqlstr)
 	return
 }

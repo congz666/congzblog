@@ -45,6 +45,7 @@ func Init() *gin.Engine {
 		backstage.POST("/category/del", api.CategoryDelete)    //删除分类
 		backstage.GET("/category/update", api.CategoryUpdate)  //获取修改分类界面
 		backstage.POST("/category/post", api.CategoryPost)     //修改分类
+		backstage.GET("/comment/list", api.CommentList)        //获取评论列表
 		backstage.POST("/comment/del", api.CommentDelete)      //删除评论
 		backstage.GET("/leave/list", api.LeaveList)            //获取评论列表
 		backstage.POST("/leave/del", api.LeaveDelete)          //删除留言

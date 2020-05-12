@@ -8,6 +8,7 @@ import (
 	"github.com/congz666/congzblog/dao/db"
 	"github.com/congz666/congzblog/service"
 	"github.com/congz666/congzblog/utils"
+	"github.com/congz666/congzblog/utils/logging"
 
 	"github.com/gin-gonic/gin"
 )
@@ -119,7 +120,7 @@ func CommentSubmit(c *gin.Context) {
 	author := c.PostForm("author")
 	email := c.PostForm("email")
 	summary := string([]rune(comment)[:10])
-	articleIDStr := c.PostForm("article_id")
+	articleIDStr := c.Query("article_id")
 	articleID, err := strconv.ParseInt(articleIDStr, 10, 64)
 	if err != nil {
 		c.HTML(http.StatusInternalServerError, "views/errors/500.html", nil)
@@ -127,6 +128,7 @@ func CommentSubmit(c *gin.Context) {
 	}
 	err = service.InsertComment(comment, author, email, summary, articleID)
 	if err != nil {
+		logging.Error(err)
 		c.HTML(http.StatusInternalServerError, "views/errors/500.html", nil)
 		return
 	}
@@ -488,17 +490,29 @@ func CategoryPost(c *gin.Context) {
 	c.Redirect(http.StatusMovedPermanently, "/backstage/category/list")
 }
 
+//CommentList ...
+//获取评论列表
+func CommentList(c *gin.Context) {
+	commentList, err := service.GetAllCommentList()
+	if err != nil {
+		c.HTML(http.StatusInternalServerError, "views/errors/500.html", nil)
+	}
+	c.HTML(http.StatusOK, "views/backstage/commentlist.html", gin.H{
+		"comment_list": commentList,
+	})
+}
+
 //CommentDelete ...
 //删除评论
 func CommentDelete(c *gin.Context) {
-	commentIDStr := c.PostForm("comment_id")
+	commentIDStr := c.Query("comment_id")
 	commentID, err := strconv.ParseInt(commentIDStr, 10, 64)
 	if err != nil {
 		c.HTML(http.StatusInternalServerError, "views/errors/500.html", nil)
 		return
 	}
 	service.DeliverCommentID(commentID)
-	c.Redirect(http.StatusMovedPermanently, "/backstage")
+	c.Redirect(http.StatusMovedPermanently, "/backstage/comment/list")
 }
 
 //LeaveList ...

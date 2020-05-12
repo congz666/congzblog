@@ -25,6 +25,8 @@
                                     <small>所属分类：</small>
                                     <a class="btn btn-white" href="/category?category_id={{ .detail.Category.CategoryID }}"
                                         target="_blank">{{ .detail.CategoryName }}</a>
+                                    <small>评论数量：</small>
+                                    {{.detail.CommentCount}}
                             </div>
                         </p>
 
@@ -71,6 +73,40 @@
                     <a href="/article/detail/?article_id={{.ArticleID}}">{{.Title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     {{end}}
                     {{end}}
+                    
+                    <div class="comments">
+                        {{range .comment_list}}
+                        <div class="comment-wrap">
+                            <div class="comment-block">
+                                    <p class="comment-text">{{.Content}} </p>
+                                            <div class="bottom-comment">
+                                                    <div class="comment-date">{{.CreatedAt}}</div>
+                                                    <ul class="comment-actions">
+                                                        <li class="complain">{{.Username}}</li>
+                                                        <li class="reply">{{.Email}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{end}}
+                                                    <div class="comment-wrap">
+
+                                                            <div class="comment-block">
+                                                                <form action="/comment/submit?article_id={{.detail.ID}}" method="POST">
+                                                                    <textarea name="comment" id="" cols="30" rows="3" placeholder="Say somthing..."></textarea>																	
+                                                            </div>
+                                                        </div>
+                                                    <div class="comment-input">
+                                                                <input name="author" type="text" placeholder="name..."/>
+                                                              </div>
+                                                              <div class="comment-input">
+                                                              <input name="email" type="text" placeholder="email..."/>
+                                                            </div>
+                                                            <div class="comment-input">
+                                                            <input type="submit" value="评论" />
+                                                            </div>
+                                                            </form>
+                                                </div>
                     </div>
                 </div>
                 <div class="col-md-3">
